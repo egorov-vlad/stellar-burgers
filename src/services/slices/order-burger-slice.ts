@@ -17,7 +17,7 @@ const initialState: TInitialState = {
 
 export const sendOrderBurger = createAsyncThunk(
   'orders/orderBurger',
-  async (ingredients: string[]) => orderBurgerApi(ingredients)
+  orderBurgerApi
 );
 
 const orderBurgerSlice = createSlice({

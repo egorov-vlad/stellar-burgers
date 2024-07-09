@@ -32,7 +32,7 @@ export const getUser = createAsyncThunk('user/getUser', getUserApi);
 
 export const registerUser = createAsyncThunk(
   'user/registerUser',
-  async (data: TRegisterData) => registerUserApi(data)
+  registerUserApi
 );
 
 export const loginUser = createAsyncThunk(
@@ -51,10 +51,7 @@ export const loginUser = createAsyncThunk(
 );
 
 //TODO: maybe needed check susses response
-export const updateUser = createAsyncThunk(
-  'user/updateUser',
-  async (data: TRegisterData) => updateUserApi(data)
-);
+export const updateUser = createAsyncThunk('user/updateUser', updateUserApi);
 
 export const logout = createAsyncThunk('user/logout', logoutApi);
 
