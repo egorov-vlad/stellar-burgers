@@ -1,9 +1,8 @@
-import { getUserOrders, userOrdersReducer } from './user-orders-slice';
-
-const initialState = {
-  orders: [],
-  isLoading: false
-};
+import {
+  getUserOrders,
+  userOrdersReducer,
+  userOrdersInitialState
+} from './user-orders-slice';
 
 const orders = [
   {
@@ -24,10 +23,10 @@ const orders = [
 
 describe('Test user-orders slice', () => {
   it('test get user orders', () => {
-    const state = userOrdersReducer(initialState, {
+    const state = userOrdersReducer(userOrdersInitialState, {
       type: getUserOrders.fulfilled.type,
       payload: orders
     });
-    expect(state).toEqual({ ...initialState, orders });
+    expect(state).toEqual({ ...userOrdersInitialState, orders });
   });
 });

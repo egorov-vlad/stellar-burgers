@@ -1,9 +1,8 @@
-import { getOrderByNumber, orderReducer } from './order-slice';
-
-const initialState = {
-  order: null,
-  isLoading: false
-};
+import {
+  getOrderByNumber,
+  orderReducer,
+  orderInitialState
+} from './order-slice';
 
 const orders = [
   {
@@ -24,24 +23,24 @@ const orders = [
 
 describe('Test order slice', () => {
   it('test get order by number', () => {
-    const state = orderReducer(initialState, {
+    const state = orderReducer(orderInitialState, {
       type: getOrderByNumber.fulfilled.type,
       payload: { orders }
     });
-    expect(state).toEqual({ ...initialState, order: orders[0] });
+    expect(state).toEqual({ ...orderInitialState, order: orders[0] });
   });
 
   it('test get order by number rejected', () => {
-    const state = orderReducer(initialState, {
+    const state = orderReducer(orderInitialState, {
       type: getOrderByNumber.rejected.type
     });
-    expect(state).toEqual({ ...initialState, isLoading: false });
+    expect(state).toEqual({ ...orderInitialState, isLoading: false });
   });
 
   it('test get order by number pending', () => {
-    const state = orderReducer(initialState, {
+    const state = orderReducer(orderInitialState, {
       type: getOrderByNumber.pending.type
     });
-    expect(state).toEqual({ ...initialState, isLoading: true });
+    expect(state).toEqual({ ...orderInitialState, isLoading: true });
   });
 });

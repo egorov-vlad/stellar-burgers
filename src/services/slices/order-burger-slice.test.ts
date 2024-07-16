@@ -3,10 +3,11 @@ import {
   sendOrderBurger,
   resetOrder,
   resetIngredients,
-  orderBurgerReducer
+  orderBurgerReducer,
+  orderBurgerInitialState
 } from './order-burger-slice';
 
-const initialState = {
+const newState = {
   ingredients: [
     '643d69a5c3f7b9001cfa093c',
     '643d69a5c3f7b9001cfa0943',
@@ -32,37 +33,37 @@ const initialState = {
 
 describe('Test order-burger slice', () => {
   it('test reset order', () => {
-    const state = orderBurgerReducer(initialState, resetOrder());
-    expect(state).toEqual({ ...initialState, order: null });
+    const state = orderBurgerReducer(newState, resetOrder());
+    expect(state).toEqual({ ...newState, order: null });
   });
 
   it('test reset ingredients', () => {
-    const state = orderBurgerReducer(initialState, resetIngredients());
-    expect(state).toEqual({ ...initialState, ingredients: [] });
+    const state = orderBurgerReducer(newState, resetIngredients());
+    expect(state).toEqual({ ...newState, ingredients: [] });
   });
 
   it('test send order', () => {
-    const state = orderBurgerReducer(initialState, {
+    const state = orderBurgerReducer(orderBurgerInitialState, {
       type: sendOrderBurger.fulfilled.type,
-      payload: initialState
+      payload: newState
     });
 
-    expect(state).toEqual(initialState);
+    expect(state).toEqual(newState);
   });
 
   it('test send order rejected', () => {
-    const state = orderBurgerReducer(initialState, {
+    const state = orderBurgerReducer(newState, {
       type: sendOrderBurger.rejected.type
     });
 
-    expect(state).toEqual({ ...initialState, isLoading: false });
+    expect(state).toEqual({ ...newState, isLoading: false });
   });
 
   it('test send order pending', () => {
-    const state = orderBurgerReducer(initialState, {
+    const state = orderBurgerReducer(newState, {
       type: sendOrderBurger.pending.type
     });
 
-    expect(state).toEqual({ ...initialState, isLoading: true });
+    expect(state).toEqual({ ...newState, isLoading: true });
   });
 });

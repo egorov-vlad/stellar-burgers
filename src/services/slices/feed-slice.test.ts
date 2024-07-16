@@ -5,13 +5,6 @@ import {
   resetFeed
 } from './feed-slice';
 
-const initState = {
-  orders: [],
-  total: 0,
-  totalToday: 0,
-  isLoading: false
-};
-
 const payload = {
   orders: [
     {
@@ -45,7 +38,7 @@ const payload = {
 
 describe('Test feed slice', () => {
   it('get feeds', () => {
-    const newState = feedReducer(initState, {
+    const newState = feedReducer(feedInitialState, {
       type: getFeeds.fulfilled.type,
       payload
     });
@@ -53,7 +46,7 @@ describe('Test feed slice', () => {
   });
 
   it('reset feed', () => {
-    const newState = feedReducer(initState, {
+    const newState = feedReducer(feedInitialState, {
       type: resetFeed.type
     });
     expect(newState).toEqual(feedInitialState);

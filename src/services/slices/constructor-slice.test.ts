@@ -5,7 +5,7 @@ import {
   moveUpSleetedIngredient,
   removeSleetedIngredient,
   constructorReducer,
-  TInitialState,
+  constructorInitialState,
   resetConstructor
 } from './constructor-slice';
 
@@ -40,17 +40,15 @@ const ingredient = {
   __v: 0
 };
 
-const initState: TInitialState = { bun: null, sleetedIngredients: [] };
-
 describe('Test constructor slice', () => {
   it('add bun to constructor', () => {
-    const newState = constructorReducer(initState, addBun(bun));
+    const newState = constructorReducer(constructorInitialState, addBun(bun));
     expect(newState).toEqual({ bun, sleetedIngredients: [] });
   });
 
   it('add ingredient to constructor', () => {
     const newState = constructorReducer(
-      initState,
+      constructorInitialState,
       addSleetedIngredient(ingredient)
     );
 
@@ -64,7 +62,7 @@ describe('Test constructor slice', () => {
 
   it('remove ingredient from constructor', () => {
     const newState = constructorReducer(
-      initState,
+      constructorInitialState,
       removeSleetedIngredient(ingredient)
     );
     expect(newState).toEqual({ bun: null, sleetedIngredients: [] });
@@ -115,7 +113,10 @@ describe('Test constructor slice', () => {
   });
 
   it('reset constructor', () => {
-    const newState = constructorReducer(initState, resetConstructor());
+    const newState = constructorReducer(
+      constructorInitialState,
+      resetConstructor()
+    );
     expect(newState).toEqual({ bun: null, sleetedIngredients: [] });
   });
 });

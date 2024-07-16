@@ -1,9 +1,8 @@
-import { getIngredients, ingredientsReducer } from './ingredients-slice';
-
-const initState = {
-  ingredients: [],
-  isLoading: false
-};
+import {
+  getIngredients,
+  ingredientsReducer,
+  ingredientsInitialState
+} from './ingredients-slice';
 
 const ingredients = [
   {
@@ -38,7 +37,7 @@ const ingredients = [
 
 describe('Test ingredients slice', () => {
   it('test loading ingredients', () => {
-    const stateIsLoading = ingredientsReducer(initState, {
+    const stateIsLoading = ingredientsReducer(ingredientsInitialState, {
       type: getIngredients.pending.type
     });
 
@@ -52,7 +51,7 @@ describe('Test ingredients slice', () => {
   });
 
   it('test get ingredients', () => {
-    const state = ingredientsReducer(initState, {
+    const state = ingredientsReducer(ingredientsInitialState, {
       type: getIngredients.fulfilled.type,
       payload: ingredients
     });
@@ -61,10 +60,10 @@ describe('Test ingredients slice', () => {
   });
 
   it('test get ingredients rejected', () => {
-    const state = ingredientsReducer(initState, {
+    const state = ingredientsReducer(ingredientsInitialState, {
       type: getIngredients.rejected.type
     });
 
-    expect(state).toEqual(initState);
+    expect(state).toEqual(ingredientsInitialState);
   });
 });
