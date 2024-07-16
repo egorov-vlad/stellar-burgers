@@ -8,7 +8,7 @@ type TInitialState = {
   isLoading: boolean;
 };
 
-const initialState: TInitialState = {
+export const orderInitialState: TInitialState = {
   order: null,
   isLoading: false
 };
@@ -20,7 +20,7 @@ export const getOrderByNumber = createAsyncThunk(
 
 const orderSlice = createSlice({
   name: 'order',
-  initialState: initialState,
+  initialState: orderInitialState,
   reducers: {},
   selectors: {
     selectOrder: (state) => state.order,
