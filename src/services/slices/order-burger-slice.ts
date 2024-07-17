@@ -9,7 +9,7 @@ type TInitialState = {
   isLoading: boolean;
 };
 
-const initialState: TInitialState = {
+export const orderBurgerInitialState: TInitialState = {
   ingredients: [],
   order: null,
   isLoading: false
@@ -22,7 +22,7 @@ export const sendOrderBurger = createAsyncThunk(
 
 const orderBurgerSlice = createSlice({
   name: 'orderBurger',
-  initialState: initialState,
+  initialState: orderBurgerInitialState,
   reducers: {
     resetOrder: (state) => {
       state.order = null;

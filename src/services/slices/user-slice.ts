@@ -20,7 +20,7 @@ export interface IUserState {
   error: string | null | undefined;
 }
 
-const initialState: IUserState = {
+export const userInitialState: IUserState = {
   isAuthChecked: false,
   isAuthenticated: false,
   user: null,
@@ -68,7 +68,7 @@ export const checkAuth = createAsyncThunk(
 
 export const userSlice = createSlice({
   name: 'user',
-  initialState: initialState,
+  initialState: userInitialState,
   reducers: {
     checkIsAuth: (state) => {
       state.isAuthChecked = true;

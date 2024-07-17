@@ -1,19 +1,19 @@
 import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit';
 import { TConstructorIngredient, TIngredient } from '@utils-types';
 
-type TInitialState = {
+export type TInitialState = {
   bun: TConstructorIngredient | null;
   sleetedIngredients: TConstructorIngredient[];
 };
 
-const initialState: TInitialState = {
+export const constructorInitialState: TInitialState = {
   bun: null,
   sleetedIngredients: []
 };
 
 const constructorSlice = createSlice({
   name: 'ingredientsConstructor',
-  initialState: initialState,
+  initialState: constructorInitialState,
   selectors: {
     selectSleetedIngredients: (state) => state.sleetedIngredients,
     selectSelectedBun: (state) => state.bun

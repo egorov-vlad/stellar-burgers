@@ -7,7 +7,7 @@ type TInitialState = {
   isLoading: boolean;
 };
 
-const initialState: TInitialState = {
+export const ingredientsInitialState: TInitialState = {
   ingredients: [],
   isLoading: false
 };
@@ -19,7 +19,7 @@ export const getIngredients = createAsyncThunk(
 
 const ingredientsSlice = createSlice({
   name: 'ingredients',
-  initialState: initialState,
+  initialState: ingredientsInitialState,
   reducers: {},
   selectors: {
     selectIngredients: (state) => state.ingredients,
